@@ -30,7 +30,7 @@ int main() {
 	printf("Введите целое число: ");
 	scanf("%d", &i);
 
-	printf("Введите вещественное число типа float:");
+	printf("Введите вещественное число типа float: ");
 	scanf("%f", &f);
 
 	task_1_a(d);
@@ -41,7 +41,7 @@ int main() {
 	printf("\nЗАДАНИЕ 2\n");
 	int a = 11;
 	int b = 3;
-	
+
 	task_2_1(a, b);
 	task_2_2(a, b);
 
@@ -53,12 +53,10 @@ int main() {
 
 	task_3(N);
 
-
 	return 0;
 }
 
 int task_1_a(double d) { // задача 1а
-
 	int int_part = (int)d;
 	double frac_part = d - int_part;
 
@@ -70,7 +68,6 @@ int task_1_a(double d) { // задача 1а
 }
 
 int task_1_b(char c) { // задача 1б
-	
 	printf("Символ: '%c'\n", c);
 	printf("Десятичный код (DEC): %d\n", c);
 	printf("Шестнадцатеричный код (HEX): %X\n\n", c);
@@ -79,13 +76,11 @@ int task_1_b(char c) { // задача 1б
 }
 
 int task_1_v(int i) { // задача 1в
-
 	double result = 1.0 / i;
 	printf("Целое число: %d\n", i);
 	printf("Результат 1/%d равен: %f\n", i, result);
 
 	return 0;
-
 }
 
 int task_2_1(int a, int b) { // пункты 1-5
@@ -107,33 +102,27 @@ int task_2_1(int a, int b) { // пункты 1-5
 }
 
 int task_2_2(int a, int b) { // пункт 6
+	printf("Преобразование ДО деления:\n");
 	printf("Явное преобразование к float:  %.2f\n", (float)a / b);
-	printf("Явное преобразование к double: %.3lf\n\n", (double)a / b);
+	printf("Явное преобразование к double: %.3lf\n", (double)a / b);
+	printf("\nПреобразование ПОСЛЕ деления:\n");
+	printf("Явное преобразование к float:  %.2f\n", (float)(a / b));
+	printf("Явное преобразование к double: %.3lf\n\n", (double)(a / b));
 
 	return 0;
 }
 
 int task_3(int N) {
+	N = N * ((N > 0) - (N < 0));
 
-	int is_negative = (N < 0); //для отрицательного числа
-	if (N < 0) { 
-		N = -N;
-	}
+	int last = N % 10;          // Последняя цифра
+	int first = N / 100;        // Первая цифра
+	int middle = (N / 10) % 10; // Средняя цифра
 
-	if (N < 100 || N > 999) {
-		printf("Ошибка: введеное число не является трехзначным!\n");
-		return 1;
-	}
+	int sum = first + middle + last; // Сумма цифр
+	int revers = last * 100 + middle * 10 + first; // Число наоборот
 
-	int last = N % 10; //Последняя цифра
-	int first = N / 100; //Первая цифра
-	int middle = (N / 10) % 10; //Средняя цифра (чтобы расчитать сумму цифр в числе)
-
-	int sum = first + middle + last; //Сумма цифр в числе
-
-	int revers = last * 100 + middle * 10 + first;
-
-	printf("Введеное число: %d\n", N);
+	printf("Обработанное число (без знака): %d\n", N);
 	printf("а) Последняя цифра - %d | б) Первая цифра - %d | в) Сумма цифр - %d\n", last, first, sum);
 	printf("Число наоборот: %d\n", revers);
 
